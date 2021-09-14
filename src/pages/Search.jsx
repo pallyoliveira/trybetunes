@@ -6,7 +6,8 @@ class Search extends React.Component {
     return (
       <div data-testid="page-search">
         <Header />
-        Search
+        <input type="text" data-testid="search-artist-input" />
+        <button type="submit" data-testid="search-artist-button">Pesquisar</button>
       </div>
     );
   }

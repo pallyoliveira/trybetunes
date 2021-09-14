@@ -19,7 +19,7 @@ class Login extends React.Component {
   async btnSave() {
     const { name } = this.state;
     this.setState({ loading: true });
-    await createUser({ name });
+    await createUser({ name }); // createUser({name: "Nome digitado"});
     this.setState({ loading: false, redirect: true });
   }
 

@@ -17,7 +17,7 @@ const simulateRequest = (response) => (callback) => {
     callback(response);
   }, TIMEOUT);
 };
-
+// Para recuperar as informações da pessoa usuária, utilize a função getUser. Ela retornará um objeto com as informações da pessoa logada caso exista. Atenção: caso não encontre nenhuma informação da banda ou artista, a API retornará um objeto vazio.
 export const getUser = () => new Promise((resolve) => {
   let user = readUser();
   if (user === null) {
@@ -26,6 +26,7 @@ export const getUser = () => new Promise((resolve) => {
   simulateRequest(user)(resolve);
 });
 
+// Para criar um novo perfil, utilize a função createUser, ela recebe como parâmetro o objeto que contém as informações da pessoa usuária. Esse objeto deverá conter a seguinte estrutura:
 export const createUser = (user) => new Promise((resolve) => {
   const emptyUser = {
     name: '',

@@ -10,22 +10,21 @@ class Search extends React.Component {
       loading: false,
       album: [],
       name: '',
+      artist: '',
     };
     this.alteraName = this.alteraName.bind(this);
     this.getAlbums = this.getAlbums.bind(this);
   }
 
   async getAlbums() {
-    this.setState({ loading: true });
     const { name } = this.state;
+    this.setState({ loading: true, artist: name });
     const disco = await searchAlbumsAPI(name); // parâmetro uma string, que deve ser o nome da banda ou artista
-    console.log(name);
     this.setState({
       album: disco, //  O retorno dessa função, quando encontra as informações, é um array
       name: '',
       loading: false,
     });
-    console.log(disco);
   }
 
   // input
@@ -38,7 +37,7 @@ class Search extends React.Component {
 
   render() {
     const MIN_LENGTH = 2;
-    const { name, album, loading } = this.state;
+    const { name, album, loading, artist } = this.state;
     //   const { artistId, artistName, collectionId, collectionName, collectionPrice, artworkUrl100, releaseDate, trackCount } = album;
     return (
       <div data-testid="page-search">
@@ -59,6 +58,10 @@ class Search extends React.Component {
           Pesquisar
         </button>
         {loading ? <Loading /> : '' }
+        <p>
+          {album.length === 0 ? 'Nenhum álbum foi encontrado' : ` Resultado de álbuns de:
+          ${artist}`}
+        </p>
       </div>
     );
   }

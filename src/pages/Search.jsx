@@ -67,16 +67,15 @@ class Search extends React.Component {
         </p>
         <section>
           {/* Código renderização do album inspirado no do Marcello Alves (T14A) */}
-          {album.map(({ artistName, artworkUrl100, collectionName, collectionId },
-            key) => (
-              <div key={ key }>
+          {album.map(({ artistName, artworkUrl100, collectionName, collectionId }, k) => (
+            <div key={ k }>
               <p>{artistName}</p>
               <img src={ artworkUrl100 } alt="Imagem do Álbum" />
               <p>{collectionName}</p>
               <Link
-                  to={ `/album/${collectionId}` }
-                  data-testid={ `link-to-album-${collectionId}` }
-                />
+                to={ `/album/${collectionId}` }
+                data-testid={ `link-to-album-${collectionId}` }
+              />
             </div>
           ))}
         </section>

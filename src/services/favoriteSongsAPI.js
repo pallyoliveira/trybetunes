@@ -2,8 +2,6 @@ const FAVORITE_SONGS_KEY = 'favorite_songs';
 const TIMEOUT = 500;
 const SUCCESS_STATUS = 'OK';
 
-// ALOU
-
 if (!JSON.parse(localStorage.getItem(FAVORITE_SONGS_KEY))) {
   localStorage.setItem(FAVORITE_SONGS_KEY, JSON.stringify([]));
 }

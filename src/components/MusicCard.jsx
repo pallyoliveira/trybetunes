@@ -13,20 +13,20 @@ class MusicCard extends React.Component {
     this.add = this.add.bind(this);
   }
 
-  async add() {
-    this.state = {
+  async add(music) {
+    this.setState({
       loading: true,
-    };
-    await addSong();
-    this.state = {
+    });
+    await addSong(music);
+    this.setState({
       loading: false,
-    };
+    });
   }
 
   alteraName({ target }) {
     const { checked } = target;
     const { music } = this.props;
-    if (checked) return this.add(music);
+    if (checked) this.add(music);
   }
 
   render() {
@@ -35,11 +35,10 @@ class MusicCard extends React.Component {
     const { trackName, previewUrl, trackId } = music;
     return (
       <section>
-        {loading ? <Loading /> : ''}
+        {loading ? <Loading /> : null}
         <div>
           {trackName}
         </div>
-
         <audio data-testid="audio-component" src={ previewUrl } controls>
           <track kind="captions" />
           O seu navegador não suporta o elemento

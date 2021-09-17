@@ -23,6 +23,24 @@ class Album extends React.Component {
     // this.setState({ loading: true });
     const { match: { params: { id } } } = this.props;
     const music = await getMusics(id);
+    // console.log(music);
+    // [ { artistName: 'Artist Name', collectionName: 'Collection Name' },
+    // { trackId: 12,
+    //   trackName: 'Track Name 1',
+    //   previewUrl: 'preview-url-1',
+    //   kind: 'song' },
+    // { trackId: 21,
+    //   trackName: 'Track Name 2',
+    //   previewUrl: 'preview-url-2',
+    //   kind: 'song' },
+    // { trackId: 31,
+    //   trackName: 'Track Name 3',
+    //   previewUrl: 'preview-url-3',
+    //   kind: 'song' },
+    // { trackId: 42,
+    //   trackName: 'Track Name 4',
+    //   previewUrl: 'preview-url-4',
+    //   kind: 'song' } ]
     this.setState({
       musics: music.slice(1), // agora o que está dentro do array é apenas os obj com as faixas, tirando o elemento 0 (primeiro)
       artist: music[0].artistName,
@@ -30,9 +48,9 @@ class Album extends React.Component {
     });
   }
 
+  // Obtive ajuda do Filipe Brochier
   render() {
     const { musics, album, artist } = this.state;
-
     return (
       <div data-testid="page-album">
         <Header />

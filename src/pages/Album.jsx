@@ -20,7 +20,6 @@ class Album extends React.Component {
   }
 
   async getMusic() {
-    // this.setState({ loading: true });
     const { match: { params: { id } } } = this.props;
     const music = await getMusics(id);
     // console.log(music);
